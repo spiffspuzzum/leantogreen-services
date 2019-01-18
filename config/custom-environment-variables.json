@@ -1,0 +1,4 @@
+{
+    "db": "lean_db",
+    "jwtPrivateKey": "better_jwtPrivateKey"
+}
