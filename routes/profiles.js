@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', auth, async(req,res) => {
     let profile = await Profile.find({}).where('userId', req.user._id);
     if(profile.length === 0) {
-        profile = new Profile({ 
+        let newProfile = new Profile({ 
             userId: req.user._id,
             vegOrVegan: false,
             ownHome: false,
@@ -14,7 +14,8 @@ router.get('/', auth, async(req,res) => {
             currentGoals: [],
             completedGoals: []
         });
-        await profile.save();
+        await newProfile.save();
+        profile = [newProfile];
     }
     res.send(profile);
 });

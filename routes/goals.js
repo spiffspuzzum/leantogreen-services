@@ -3,6 +3,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async (req,res) => {
+    //get jwt from header
+    //decode it
+    //get userId
+    //get current goals
+    //only return a goal that is not in current goals
     const totalGoals = await Goal.find({}).where('active', true);
     let goals = [];
     for( let i = 0; i < 3; i++){
